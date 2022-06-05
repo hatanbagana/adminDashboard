@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import './App.css';
 import Login from './components/Login';
+import Main from './Main';
+
 
 function App() {
   const [data, setData] = useState([])
@@ -28,7 +30,17 @@ async function postData(url = '', data = {}) {
 
 
 function clicked(){
-  postData('http://localhost:3000/api/users', { pollName: 50 })
+  const requestOptions = {
+   "id":"6299be13bbb43caf6d1199b8",
+    "date": 20220603,
+    "orderNumber": 3,
+    "user": "Hatnaa",
+    "order": "Brocly",
+    "total": 34500,
+    "card": "Card",
+    "phoneNumber": 99097733
+};
+  postData('http://localhost:3000/api/users', requestOptions)
     .then(data => {
       console.log(data); // JSON data parsed by `data.json()` call
     });
@@ -51,7 +63,14 @@ function putreq()
   const requestOptions = {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
-    body: {"id":"6299be13bbb43caf6d1199b8", "pollName": 123 }
+    body: { "id":"6299be13bbb43caf6d1199b8",
+    "date": 20220603,
+    "orderNumber": 3,
+    "user": "Hatnaa",
+    "order": "Brocly",
+    "total": 34500,
+    "card": "Card",
+    "phoneNumber": 99097733}
 };
 fetch('http://localhost:3000/api/users', requestOptions)
     .then(response => response.json())
@@ -62,7 +81,8 @@ fetch('http://localhost:3000/api/users', requestOptions)
 
   return (
     <>
-    {localStorage.getItem("user")? console.log('aa') :   <Login/>}
+    {localStorage.getItem("user")? <Main/> :   <Login/>}
+
     <button onClick={clicked}>asd</button>
     <button onClick={getReq}>req</button>
     <button onClick={putreq}>put</button>
