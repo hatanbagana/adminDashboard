@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from 'react'
-import Nav from './Nav';
-import '../styles/orders.css'
-import { Dropdown, Table } from 'react-bootstrap';
+import React, { useEffect, useState } from "react";
+import Nav from "./Nav";
+import "../styles/orders.css";
+import { Dropdown, Table } from "react-bootstrap";
+import Order from "./Order";
 export default function Orders() {
-  const [data, setData] = useState([])
-  const [success, setSuccess] = useState('Амжилттай')
+  const [data, setData] = useState([]);
 
-  useEffect(()=>{
-    fetch('http://localhost:3000/api/users').then(data => data.json())
-    .then(res=> setData(res.data))
-  }, [])
+  useEffect(() => {
+    fetch("http://localhost:3000/api/users")
+      .then((data) => data.json())
+      .then((res) => setData(res.data));
+  }, []);
   console.log(data);
   return (
-    <div className='orders'>
-      <Nav/>
+    <div className="orders">
+      <Nav />
       <div className="container">
         <div className="buttons">
           <button>Амжилттай</button>
@@ -32,35 +33,11 @@ export default function Orders() {
               <th>Утас</th>
               <th>Төлөв</th>
             </tr>
-          </thead>  
+          </thead>
           <tbody>
-          {data.map((e, index) => (
-              <>
-              
-              <tr>
-                <td>{index+1}</td>
-                <td>{e.orderdate}</td>
-                <td>{e.orderNumber}</td>
-                <td>{e.user}</td>
-                <td>{e.order}</td>
-                <td>{e.total}</td>
-                <td>{e.card}</td>
-                <td>{e.phoneNumber}</td>
-                <td><Dropdown>
-  <Dropdown.Toggle className={success=="Амжилттай"? "dropdown" : "dropdown1"} >
- { success}
-  </Dropdown.Toggle>
-
-  <Dropdown.Menu>
-    <Dropdown.Item className='dropdown_item' href="#/action-1" onClick={()=>setSuccess('Амжилттай')}>Амжилттай</Dropdown.Item>
-    <Dropdown.Item className='dropdown_item' href="#/action-2" onClick={()=>setSuccess('Хүлээн авсан')}>Хүлээн авсан</Dropdown.Item>
-  </Dropdown.Menu>
-</Dropdown></td>
-              </tr>
-
-              </>
-              ))}
-
+            {data.map((e, index) => (
+                  <Order index={index} orderdate={e.orderdate} orderNumber={e.orderNumber} user={e.user} order={e.order}  total={e.total} card={e.card} phoneNumber={e.phoneNumber}   />
+            ))}
 
             {/* <tr>
               <td>1</td>
@@ -72,5 +49,5 @@ export default function Orders() {
         </Table>
       </div>
     </div>
-  )
+  );
 }
