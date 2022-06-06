@@ -7,7 +7,7 @@ export default function Orders() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/users")
+    fetch("http://localhost:3000/api/orders")
       .then((data) => data.json())
       .then((res) => setData(res.data));
   }, []);

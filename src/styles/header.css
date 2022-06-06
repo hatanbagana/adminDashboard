@@ -57,3 +57,13 @@
   margin-right: 20px;
   padding-top: 15px;
 }
+
+.sda{
+  width: 100%;
+  background-color: #f17228;
+  color: white;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

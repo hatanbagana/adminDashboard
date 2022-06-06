@@ -82,18 +82,17 @@ fetch('http://localhost:3000/api/users', requestOptions)
   return (
     <>
     {localStorage.getItem("user")? <Main/> :   <Login/>}
-
-    <button onClick={clicked}>asd</button>
+    {/* <button onClick={clicked}>asd</button>
     <button onClick={getReq}>req</button>
-    <button onClick={putreq}>put</button>
-
+    <button onClick={putreq}>put</button> */}
+{/* 
     {data.map(e=>{
       return(
         <>
           <p>{e.pollName}</p>
         </>
       )
-    })}
+    })} */}
     </>
   );
 }

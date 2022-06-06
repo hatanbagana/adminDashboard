@@ -11,15 +11,21 @@ export default function Login() {
           password: e.target[1].value,
         }).then(res => res.json())
         .then(data => {
-            if(data.success){
+            console.log(data);
+            if(data.message == 'success'){
                 userService.user_info(data)
-                setUser({name: data.data.name, email: data.data.email})
+                setUser({name: data.data.name, mail: data.data.mail})
                 
 
-                alert('amjilttai husere bandia')
+                alert('amjilttai nevterlee')
             }
             else{
                 alert('noots kod buruu bn')
+            }
+        }).catch(err=>{
+            if (err) {
+                console.log(err);
+                
             }
         })
 

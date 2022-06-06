@@ -17,7 +17,7 @@ export const UserProvider = (props) => {
     if (localStorage.getItem("user")) {
       
       let data = JSON.parse(localStorage.getItem("user"))
-      setUser({name: data.name, email: data.email})
+      setUser({name: data.name, email: data.mail})
     }
   }, []);
 

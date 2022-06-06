@@ -16,9 +16,28 @@ const getCat = async () => {
     // body: JSON.stringify(),
   });
 };
+// const getUsers = async () => {
+//   return await fetch("http://localhost:3000/api/users", {
+//     method: "GET",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     // body: JSON.stringify(),
+//   });
+// };
+const getUsers = async () => {
+  return await fetch("http://localhost:3000/api/users", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    // body: JSON.stringify(),
+  });
+};
 export const otherServices = {
   getAllFood,
-  getCat
+  getCat,
+  getUsers
 };
 
 
